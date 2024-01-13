@@ -795,3 +795,63 @@ This should also be the case with our refresh and verify endpoints
 
 At minimum, the last thing you should verify is that the logout view correctly clears a users cookies
 
+
+
+
+
+To Be Continued ... 
+
+
+
+
+# React Frontend setup
+
+Inside the frontend folder create a react app with vite
+
+```
+npm create vite@latest .
+```
+
+
+
+Lets also install tailwind:
+1.
+```
+npm install -D tailwindcss postcss autoprefixer
+```
+2.
+```
+npx tailwindcss init -p
+```
+
+tailwindconfig.js
+```
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [ "./index.html", "./src/**/*.{js,ts,jsx,tsx}",],
+  theme: {
+    extend: {},
+  },
+  plugins: [require('@tailwindcss/forms'),],
+}
+
+```
+
+index.css
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+Once thats done go ahead and install axios and react-router-dom
+
+```
+npm install axios
+```
+
+```
+npm install react-router-dom
+```
+
+
