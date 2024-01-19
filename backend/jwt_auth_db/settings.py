@@ -31,7 +31,7 @@ SECRET_KEY = getenv('DJANGO_SECRET_KEY', get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://localhost:5173', 'http://localhost:8000', 'localhost']
+ALLOWED_HOSTS = ['http://localhost:5173', 'http://localhost:8000', 'localhost', 'api']
 
 
 # Application definition
@@ -117,8 +117,8 @@ DATABASES = {
 "NAME": "jwt_auth_db", 
 "USER": "postgres",
 "PASSWORD": "postgres",
-"HOST": "localhost",
-"PORT": 5454,
+"HOST": "db",
+"PORT": 5432,
     }
 }
 

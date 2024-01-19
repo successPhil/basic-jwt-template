@@ -14,14 +14,14 @@ export default function Activation() {
     useEffect(() => {
         const activateAccount = async () => {
             try {
-                const response = await axios.post("http://localhost:8000/api/users/activation/", {
+                const response = await axios.post("http://localhost/api/users/activation/", {
                     uid: uid,
                     token: token
                 });
 
                 // Handle the response as needed
                 toast.success('Account activated');
-                navigate('login')
+                navigate('/login')
             } catch (error) {
                 // Handle errors
                 toast.error('Whoops something went wrong');

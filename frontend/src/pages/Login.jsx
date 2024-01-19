@@ -1,7 +1,9 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import axios from 'axios'
-
+import { toast } from "react-toastify";
 export default function Login() {
+  const navigate = useNavigate()
   const [formData, setFormData ] = useState({
     "email": "",
     "password": "",
@@ -17,10 +19,13 @@ export default function Login() {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8000/api/jwt/create/', formData)
+      const response = await axios.post('http://localhost/api/jwt/create/', formData)
       console.log(response.data, 'Our response')
       document.cookie = `refresh=${response.data.refresh}`
       document.cookie = `access=${response.data.access}`
+      toast.success('Welcome!')
+      navigate('/profile')
+      
     }
     catch (error) {
       console.log(error)

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from 'axios';
+import { toast } from "react-toastify";
 export default function Register() {
     const [formData, setFormData ] = useState({
         "first_name": "",
@@ -20,13 +21,18 @@ export default function Register() {
     
         try {
           // Make a request to create a new user
-          const response = await axios.post('http://localhost:8000/api/users/', formData);
+          const response = await axios.post('http://localhost/api/users/', formData);
+
+          toast.success('Please check your email to activate your account before logging in')
     
           // Handle the response as needed (redirect, show success message, etc.)
           console.log('User created successfully:', response.data);
     
           // You may want to redirect the user or perform other actions upon successful user creation
         } catch (error) {
+
+          toast.error('oops, something went wrong')
+
           // Handle errors (display error messages, etc.)
           console.error('User creation failed:', error.response?.data || 'An error occurred');
         }

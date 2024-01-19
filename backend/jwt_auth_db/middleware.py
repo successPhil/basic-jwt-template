@@ -5,7 +5,7 @@ class CorsMiddleware:
 
     def __call__(self, request):
         response = self.get_response(request)
-        response['Access-Control-Allow-Origin'] = 'http://localhost:5173'
+        response['Access-Control-Allow-Origin'] = 'http://localhost'
         response['Access-Control-Allow-Credentials'] = 'true'
         response['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
         response["Access-Control-Allow-Methods"] = "DELETE, POST, GET, OPTIONS"

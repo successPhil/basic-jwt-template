@@ -10,6 +10,8 @@ import Activation from "./pages/Activation"
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Profile from "./pages/Profile"
+import Logout from "./pages/Logout"
 
 function App() {
   const [userToken, setUserToken] = useState(null)
@@ -25,6 +27,8 @@ function App() {
             <Route path="/" element={<Register />} />
             <Route path="login" element={<Login />} />
             <Route path="activation/:uid/:token" element={<Activation />}/>
+            <Route path="profile" element={<Profile/>}/>
+            <Route path="logout" element={<Logout/>}/>
           </Routes>
         </Router>
       </UserContext.Provider>
