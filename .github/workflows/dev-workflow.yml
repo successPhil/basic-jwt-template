@@ -47,14 +47,11 @@ jobs:
 
   stop-containers:
     runs-on: ubuntu-latest
-    needs: [django-tests]
     steps:
       - uses: actions/checkout@v3
       - name: Stop Containers
         run: docker-compose -f docker-compose.dev.yml down
-    finally:
-      - name: Stop containers if test fail
-        run: docker-compose -f docker-compose.dev.yml down
+   
 
 
   
