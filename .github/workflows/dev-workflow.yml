@@ -11,6 +11,7 @@ jobs:
 
   react-tests:
     runs-on: ubuntu-latest
+    container: python:3.11-buster
     steps:
     - uses: actions/checkout@v3
     - name: Set Up Node for Frontend
@@ -23,6 +24,15 @@ jobs:
       working-directory: ./frontend
     - run: npm test
       working-directory: ./frontend
+
+    services:
+      db:
+        image: postgres:15
+        env: 
+          POSTGRES_DB: jwt_auth_db
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+
 
   django-tests:
     runs-on: ubuntu-latest 
