@@ -45,8 +45,9 @@ jobs:
     - name: Start containers
       run: ./run-compose-dev-ci.sh
     - name: Run Django Tests
-      working-directory: ./backend
-    - run: python manage.py test
+    - run: |
+        cd backend
+        python manage.py test
     - name: Stop containers
       if: always()
       run: docker-compose -f docker-compose.dev.yml down
