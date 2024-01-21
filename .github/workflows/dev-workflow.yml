@@ -11,7 +11,6 @@ jobs:
 
   react-tests:
     runs-on: ubuntu-latest
-    container: python:3.11-buster
     steps:
     - uses: actions/checkout@v3
     - name: Set Up Node for Frontend
@@ -46,7 +45,15 @@ jobs:
       run: ./run-compose-dev-ci.sh
     - name: Run Django Tests
     - run: cd backend && python manage.py test
-        python manage.py test
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+          python-version: '3.11'
+    - run: pip install -r requirements.txt
+      working-directory: ./backend
+    - run: python manage.py test
+      working-directory: ./backend
+
     - name: Stop containers
       if: always()
       run: docker-compose -f docker-compose.dev.yml down
