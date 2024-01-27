@@ -40,14 +40,15 @@ jobs:
     
     # needs: [run-compose] 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11' 
       - run: pip install -r requirements.txt 
         working-directory: ./backend
-      - run: pytest
-        working-directory: ./backend
+      - run: |
+    pip install pytest pytest-cov
+    pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
 
   # stop-containers:
   #   runs-on: ubuntu-latest
