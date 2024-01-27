@@ -9,8 +9,6 @@ on:
 
 jobs:
 
-
-
   # react-tests:
   #   runs-on: ubuntu-latest
   #   steps:
@@ -37,8 +35,20 @@ jobs:
 
   django-tests:
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: ${{ secrets.DB_NAME }}
+          POSTGRES_USER: ${{ secrets.DB_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        ports:
+          - 5432:5432
+
+
     
-    # needs: [run-compose] 
+    needs: postgres 
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
@@ -46,9 +56,8 @@ jobs:
           python-version: '3.11' 
       - run: pip install -r requirements.txt 
         working-directory: ./backend
-      - run: |
-          pip install pytest pytest-cov
-          pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+      - run: python manage.py test
+        working-directory: ./backend
 
   # stop-containers:
   #   runs-on: ubuntu-latest
