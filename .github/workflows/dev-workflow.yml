@@ -46,12 +46,12 @@ jobs:
       working-directory: ./backend
 
   stop-containers:
-    runs-on: ubuntu-latest
     needs: [django-tests]
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Stop Containers
-        run: docker-compose -f docker-compose.dev.yml down
+    - uses: actions/checkout@v3
+    - name: Stop Containers
+      run: docker-compose -f docker-compose.dev.yml down
    
   
     - name: Stop containers
