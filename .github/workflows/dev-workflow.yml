@@ -14,14 +14,14 @@ jobs:
       db:
         image: postgres:15
         env:
-          POSTGRES_HOST: postgres
+          POSTGRES_HOST: localhost
           POSTGRES_PORT: 5432:5432
           POSTGRES_DB: jwt_auth_db
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
     steps:
       - name: Wait for DB to be ready
-        run: sleep 10
+        run: sleep 15
 
   quality-assurance:
     name: Quality Assurance
