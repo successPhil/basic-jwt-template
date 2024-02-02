@@ -15,11 +15,11 @@ DOCKERHUB_UNAME=successphil
 BASE_URL=$1
 NEW_VERSION=$2
 
-# docker build --build-arg VITE_BASE_URL=$BASE_URL -t $DOCKERHUB_UNAME/pokemonko_webserver-prod:$NEW_VERSION -f webserver/Dockerfile . --no-cache
-# docker push $DOCKERHUB_UNAME/pokemonko_webserver-prod:$NEW_VERSION
+docker build --build-arg VITE_BASE_URL=$BASE_URL -t $DOCKERHUB_UNAME/jwt-auth-template_webserver-prod:$NEW_VERSION -f webserver/Dockerfile . --no-cache
+docker push $DOCKERHUB_UNAME/jwt-auth-template_webserver-prod:$NEW_VERSION
 
 # docker build -t VITE_BASE_URL=$BASE_URL $DOCKERHUB_UNAME/coin_webserver-prod:$NEW_VERSION -f webserver/Dockerfile . --no-cache
-# docker push $DOCKERHUB_UNAME/coin_webserver-prod:$NEW_VERSION
+# docker push $DOCKERHUB_UNAME/jwt-auth-template-prod:$NEW_VERSION
 
-docker build -t $DOCKERHUB_UNAME/pokemonko_api-prod:$NEW_VERSION -f backend/Dockerfile ./backend --no-cache
-docker push $DOCKERHUB_UNAME/pokemonko_api-prod:$NEW_VERSION
+docker build -t $DOCKERHUB_UNAME/jwt-auth-template_api-prod:$NEW_VERSION -f backend/Dockerfile ./backend --no-cache
+docker push $DOCKERHUB_UNAME/jwt-auth-template_api-prod:$NEW_VERSION
