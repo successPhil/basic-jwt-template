@@ -11,6 +11,7 @@ export DOMAIN='3.87.29.255'
 export AWS_SES_REGION_NAME=$1
 export AWS_ACCESS_KEY_ID=$2
 export AWS_SECRET_ACCESS_KEY=$3
+export NEW_VERSION=$4
 
 
 docker-compose -f docker-compose.prod.yml build --no-cache
